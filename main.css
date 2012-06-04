@@ -1,0 +1,54 @@
+pre
+{
+	border-color: #545454; 
+	display: block; 
+	background-color: #D8D8D8 ; 
+	font-family: Courier New; Monaco; 
+	border-style: dashed; 
+	border-width: 1px; 
+	color: white; 
+	padding: 10px; 
+	border-left: 17px solid green ; 
+	border-left-width: 12px; 
+	border-left-style: solid ; 
+	border-top-right-radius: 20px ; 
+	border-bottom-right-radius: 20px ; 
+	background: #F9F9F9 url("data:image/gif;base64,R0lGODlhAQAoAIAAAE1NTUdHRyH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoxRkY5NzRGNTVBMDgxMUUxQUM5QThCRDhCOTI0NDFFQiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxRkY5NzRGNjVBMDgxMUUxQUM5QThCRDhCOTI0NDFFQiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjFGRjk3NEYzNUEwODExRTFBQzlBOEJEOEI5MjQ0MUVCIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjFGRjk3NEY0NUEwODExRTFBQzlBOEJEOEI5MjQ0MUVCIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAAAAAAAsAAAAAAEAKAAAAgeEj5nB7f8KADs=") repeat scroll 0 -9px;
+	background-image: url("data:image/gif;base64,R0lGODlhAQAoAIAAAE1NTUdHRyH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoxRkY5NzRGNTVBMDgxMUUxQUM5QThCRDhCOTI0NDFFQiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxRkY5NzRGNjVBMDgxMUUxQUM5QThCRDhCOTI0NDFFQiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjFGRjk3NEYzNUEwODExRTFBQzlBOEJEOEI5MjQ0MUVCIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjFGRjk3NEY0NUEwODExRTFBQzlBOEJEOEI5MjQ0MUVCIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAAAAAAAsAAAAAAEAKAAAAgeEj5nB7f8KADs=");
+	background-attachment: scroll;
+	background-position-x: 0px;
+	background-position-y: -9px;
+	background-origin: initial;
+	background-clip: initial;
+	background-color: #F9F9F9;
+}
+
+div#BlogPostHeader
+{
+	font-family: Georgia, Tahoma, Verdana ; 
+	font-size: 15pt ; 
+	color: green ; 
+	border-size: 1px ; 
+	border-width: 1px ; 
+	border-color: #545454 ; 
+	border-style: dashed ; 
+	padding: 20px;
+}
+
+div#BlogPostSection
+{
+	margin: 20px ; 
+	padding: 10px ; 
+	font-family: Georgia, Tahoma, Verdana ; id="BlogPostSection"
+	font-size: 14px ; 
+	border-size: 1px ;  
+	border-width: 1px ; 
+	border-style: dashed ; 
+	border-color: #545454
+}
+
+#SectionTitle
+{
+	color: green;
+	font-weight: bold;
+}
