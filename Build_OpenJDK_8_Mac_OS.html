@@ -1,0 +1,113 @@
+<link rel="stylesheet" type="text/css" href="http://dl.dropbox.com/u/8847221/Javanatomy_CSS/main.css" />
+
+<div id="BlogPostHeader">
+	<b>Build the OpenJDK8 in 10 easy steps on Mac OSX</b>
+</div>
+
+<div id="BlogPostSection">
+	<span id="SectionTitle">Introduction into the OpenJDK</span>
+	<p>
+		Java OpenJDK is an attempt to have all the development for the reference implementation of the java platform being done in the open and to create a community around the development process comprised from the day to day working Java developers which would help to have better standard, a user-targeted API and an early feedback of usability and ease of use fed into the JDK community. <br /><br />It will also allow the day to day developer to interact and hack with the OpenJDK as its being developed day after the other. The current release of the OpenJDK is the JDK8. The sources of the open JDK is being hosted on a Mercurial repository and it is publicly available for download.
+
+		<br /><br />
+		Cloning the JDK repository is done on a read-only Mercurial repository, while writing (committing changes) is done on a read-write repository called the gate repository. Changes are autmatically pushed from the gate to the read-only repository. Each JDK release consists of multiple projects, each project has several components (or repositories). The collection of repositories a project comprised of is called a forest. As such, its advisable to clone the whole set of JDK forest when working on a particular project rather than a single project's repository for the sake consistency.
+		<br /><br />
+		The naming scheme that the JDK repository follow is as below:
+		<br />
+		<pre>release/project{-gate}?/component</pre>
+		This article is aimed to be a simple step by step guide to build the OpenJDK8 on Mac OSX systems with a little insight on the build process tools and techniques
+	</p>
+</div>
+
+<div id="BlogPostSection">
+	<span id="SectionTitle">Prerequisites</span>
+	<p>
+		The following is a list of the required software and tools for building the OpenJDK
+		
+		<br />
+		<ol>
+			<li>Mac OSX 10.7.3 or later</li><br />
+			<li>Having the latest version of Xcode installed on your mac along with the developer tools. On my machine, I had the 4.3.2 version installed.</li><br />
+			<li>Since the JDK source code is hosted on Mercurial repository, we need to have the hg Mercurial tool installed, the required version should be 0.9.4 or newer, on my machine I had the 2.2.2 version installed.(to know which version of hg installed on your system, run the following command: hg -version)</li><br />
+			<li>An earlier version of the JDK, preferably JDK7.</li><br />
+		</ol>
+	</p>
+</div>
+
+<div id="BlogPostSection">
+	<span id="SectionTitle">Build instructions</span>	
+	<ol>
+		
+		<li><b><i>install the bootstrap JDK:</i></b><br /><br />
+			The OpenJDK build process requires the existence of an earlier version of the JDK to be used as the bootstrap JDK during the build. The preferred version of the JDK to be used as a bootstrap JDK is the JDK7, but an earlier version such as JDK6 should suffice. To make sure that you have the latest version of JDK installed, run the following command:
+			<pre>/usr/libexec/java_home -v 1.7 --exec java -version</pre>	
+		</li><br />			
+
+		<li><b><i>unset the JAVA_HOME:</i></b><br /><br />
+			The build process requires that we unset the JAVA_HOME directory from the shell within which we are running the JDK build process, to do that run the following command:
+			<pre>unset JAVA_HOME</pre>
+
+		</li><br />
+
+		<li><b><i>set the ALT_BOOTDIR:</i></b><br /><br />
+			At this point we need to set the ALT_BOOTDIR environment variable to point to the version of the JDK that we like to use as the bootstrap JDK:
+			<pre>export ALT_BOOTDIR=`/usr/libexec/java_home -v 1.7`</pre>
+		</li></br>
+
+		<li><b><i>Clone the JDK sources:</i></b><br /><br />
+			Now it's time to download (or clone) the latest sources of the OpenJDK from the Mercurial repository, for that we need to use the hg command as follows to download the top level projects that the JDK is comprised of, but this will not clone the nested repositories contained in each project:
+			<pre>hg clone http://hg.openjdk.java.net/jdk8/jdk8</pre>
+		</li></br>
+
+		<li><b><i>Clone the nested repositories:</i></b><br /><br />
+			Now we need to clone all the nested repositories within the JDK, for that we need to run the get_source.sh shell script as follows:
+			<pre>chmod u+x get_source.sh # adding the execute permission <br />./get_source.sh
+			</pre>
+			On my machine it took approximately 25 minutes to download the whole source code of all the open JDK repositories from the Mercurial repos, and the whole size of the JDK sources is about 735 MB
+		</li></br>
+
+		<li><b><i>pull the latest updates:</i></b><br /><br />
+			in the case that we are building from an out of date clone of the JDK sources, then we need to pull the latest updates before attempting to build it, while we can do that using the Mercurial command line but it will be tedious to do that for every single nested repo, hence we have a helper script that can do that for us in one go:
+			<pre>sh ./make/scripts/hgforest.sh pull -u</pre>
+		</li></br>
+
+		<li><b><i>Build the JDK</i></b><br /><br />
+			Now it is the time to start building the OpenJDK, the build is managed using the GNU make as follows:
+			<pre>
+chmod u+x configure # Adding the execute permission to the current user
+./configure # Running the configure script
+make sanity # run the sanity checks
+make # Start the actual build, this will also run the sanity checks
+			</pre>
+		</li></br>
+
+		<li><b><i>install the newly built JDK:</i></b><br /><br />
+			Now the build process has been completed, its time to move the newly built JDK bundle into the JavaVirtualMachines directory:
+			<pre>
+cd ./build/macosx-x86_64/j2sdk-bundle
+sudo cp -R jdk1.8.0.jdk /Library/Java/JavaVirtualMachines/jdk1.8.0.jdk
+			</pre>
+		</li></br>
+
+		<li><b><i>Verify the version of the newly installed JVM</i></b><br /><br />
+			<pre>
+/usr/libexec/java_home -v 1.8 --exec java -version
+/usr/libexec/java_home -v 1.8 --exec javac -version
+			</pre>
+		</li></br>
+
+		<li><b><i>Switch to the newly installed JDK:</i></b><br /><br />
+			to switch to the newly created JVM, you can set your /usr/libexec/java_home environment variable to the directory where the new JVM has been installed:
+			<pre>export /usr/libexec/java_home=`/usr/libexec/java_home -v 1.8`</pre>
+		</li></br>		
+	</ol>
+
+	<b>Note:</b> The <b><i>xcodebuild</i></b> shell script on Mac systems is used to run the <b><i>xcodebuild()</i></b> tool using a version of the Xcode developer tool installed on your machine, this script is a wrapper script that is used to run different versions of the xcodebuild basing on the developer tools path settings that can be located and changed using the <b><i>xcode-select</i></b> tool, if you happen to upgrade to a newer version of Xcode tools then that path might get reset and cause the xcodebuild to complain about not being able to locate the right directory to run the Xcode utility from which would cause your build to fail, here is how you can set it to the right path and resume the build:
+
+	<pre>xcode-select -switch <PATH_TO_YOUR_XCODE_DEVELOPER_TOOLS_DIRECTORY> e.g. /Applications/Xcode.app/Contents/Developer</pre>
+
+	to make sure that you have the right path for the Xcode developer tools set, run the following command:
+
+	<pre>xcode-select --print-path</pre>
+
+</div>

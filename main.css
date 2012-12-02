@@ -23,6 +23,11 @@ pre
 	background-color: #F9F9F9;
 }
 
+body
+{
+	line-height: 190%
+}
+
 div#BlogPostHeader
 {
 	font-family: Georgia, Tahoma, Verdana ; 
