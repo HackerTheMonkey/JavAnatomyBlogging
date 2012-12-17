@@ -1,0 +1,56 @@
+<link rel="stylesheet" type="text/css" href="http://dl.dropbox.com/u/8847221/Javanatomy_CSS/main.css" />
+
+<div id="BlogPostHeader">
+	<b>Add the sun-provided platform specefic extensions to the apple-provided JDK source jar</b>
+</div>
+
+<div id="BlogPostSection">
+	<span id="SectionTitle">The problem</span>
+	<p>
+		The apple-provided JDK for mac osx systems, i.e. the developer version source JAR file doesn't contain the required sources for the platform-specific extensions provided by sun. When inspecting or
+		debugging the JDK code via an IDE then that will result in displaying the decompiled version of these classes instead of the actual sources that should be shipped with the JDK distribution.
+
+		However, the same sources for these extenstion packages (sun.*) are available from within the OpenJDK6, all what we need to do is to download/clone a copy of the OpenJDK6 sources and copy these
+		over to the apple-provided JDK source JAR file to have the actual sources being displayed in your IDE while inspecting/debugging code.
+	</p>
+</div>
+
+<div id="BlogPostSection">
+	<span id="SectionTitle">How to do it?</span>
+	<ol>
+		<li>
+			Navigate to the home directory where your apple-provided JDK is installed, you can do so using the following command:
+			<br />
+			<pre>cd `java_home -v 1.6`</pre>					
+		</li>
+		<li>
+			Rename the original source JAR file that contains the source codes missing the sun.* platform extension packages, you can do so using the following command:
+			<pre>sudo mv src.jar src.jar.orig</pre>
+		</li>
+		<li>
+			Check out the latest copy of the OpenJDK6 sources, you can obtain a copy of the OpenJDK6 sources either from a ZIP file or via clonning a Mercurial repository, here we we will
+			clone the latest copy from a Mercurial repository using the following command:
+			<pre>hg clone http://hg.openjdk.java.net/jdk6/jdk6/</pre>
+		</li>
+		<li>
+			Now we need to make a copy of the original source JAR provided by apple and extract it, later on we will add the missing sources into it before copying back into our JAVA_HOME directory
+			<pre>
+cp src.jar.orig ~/tmp
+cd ~/tmp
+jar -xvf src.jar.orig
+			</pre>
+		</li>
+		<li>
+			Now we need to copy the missing sun packages from the OpenJDK sources into the content of the extracted jar, as follows:
+			<pre>cp -R &gt;The directory to your OpenJDK6 sources&gt;/jdk/src/share/sun .</pre>
+		</li>
+		<li>
+			After copying the missing sources we need to re-build the sources jar and move it back again into the JAVA_HOME where the apple-provided JDK is installed, we need to also make sure to restart
+			our IDE after copying the new JAR for the changes to take effect.
+			<pre>
+jar -cvf src.jar *
+sudo cp src.jar `java_home -v 1.6`
+			</pre>
+		</li>
+	</ol>
+</div>
